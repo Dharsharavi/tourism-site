@@ -14,7 +14,7 @@ pipeline {
                 echo "Checking out source code from GitHub..."
 
                 git branch: 'main',
-                    url: 'https://github.com/<your-username>/tourism-site.git'
+                    url: 'https://github.com/Dharsharavi/tourism-site.git'
             }
         }
 
