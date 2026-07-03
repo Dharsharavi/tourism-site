@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Trip | Explore StateName</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="navbar">
+    <a class="brand" href="index.html">🌄 Explore StateName</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="attractions.html">Attractions</a>
+      <a href="hotels.html">Hotels</a>
+      <a href="travel-guides.html">Travel Guides</a>
+      <a href="booking.html">Book a Trip</a>
+    </nav>
+  </div>
+
+  <div class="container">
+    <h2 class="section-title">Book Your Trip</h2>
+
+    <form class="booking-form" id="bookingForm">
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" placeholder="Enter your full name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="you@example.com" required>
+
+      <label for="destination">Destination</label>
+      <select id="destination" required>
+        <option value="">-- Select a destination --</option>
+        <option value="Northern Hills">Northern Hills</option>
+        <option value="Capital City">Capital City</option>
+        <option value="Coastal District">Coastal District</option>
+        <option value="Western Ghats">Western Ghats</option>
+      </select>
+
+      <label for="travelDate">Preferred Travel Date</label>
+      <input type="date" id="travelDate" required>
+
+      <label for="numberOfTravelers">Number of Travelers</label>
+      <input type="number" id="numberOfTravelers" min="1" value="1" required>
+
+      <label for="notes">Notes (optional)</label>
+      <textarea id="notes" rows="3" placeholder="Special requests, hotel preferences, etc."></textarea>
+
+      <button type="submit">Submit Booking Request</button>
+      <div id="bookingSuccess">✅ Booking request submitted! Our travel desk will contact you shortly.</div>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2026 Department of Tourism, Government of StateName
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

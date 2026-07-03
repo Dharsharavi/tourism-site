@@ -1,0 +1,34 @@
+# Horizontal Pod Autoscaler - automatically scales tourism-site pods up/down
+# based on CPU usage. This is what satisfies the "scalable hosting" requirement
+# for handling thousands of simultaneous visitors during holiday seasons.
+#
+# NOTE: this requires the Kubernetes metrics-server to be installed in your
+# cluster (Docker Desktop's Kubernetes doesn't include it by default). If
+# `kubectl get hpa` shows TARGETS as <unknown>, install metrics-server first:
+#   kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+# On Docker Desktop you may also need to patch it to allow insecure TLS:
+#   kubectl patch deployment metrics-server -n kube-system --type='json' \
+#     -p='[{"op":"add","path":"/spec/template/spec/containers/0/args/-","value":"--kubelet-insecure-tls"}]'
+#
+# The Deployment (replicas: 3) works fine on its own without this file if you
+# just want a simpler, fixed-scale submission - applying this is optional
+# bonus content demonstrating auto-scaling awareness.
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: tourism-site-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: tourism-site
+  minReplicas: 3
+  maxReplicas: 8
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 60

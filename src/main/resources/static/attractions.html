@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attractions | Explore StateName</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="navbar">
+    <a class="brand" href="index.html">🌄 Explore StateName</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="attractions.html">Attractions</a>
+      <a href="hotels.html">Hotels</a>
+      <a href="travel-guides.html">Travel Guides</a>
+      <a href="booking.html">Book a Trip</a>
+    </nav>
+  </div>
+
+  <div class="container">
+    <h2 class="section-title">Top Tourist Attractions</h2>
+
+    <!-- Populated dynamically from GET /api/attractions (see js/script.js) -->
+    <div class="card-grid" id="attractionsList">
+      <p style="text-align:center;color:#888;">Loading attractions...</p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 Department of Tourism, Government of StateName
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

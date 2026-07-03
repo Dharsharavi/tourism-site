@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: tourism-site
+  labels:
+    app: tourism-site
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: tourism-site
+
+  template:
+    metadata:
+      labels:
+        app: tourism-site
+
+    spec:
+      containers:
+        - name: tourism-site
+
+          image: tourism-site:v1
+
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - containerPort: 8081
+            - containerPort: 9091
+
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8081
+            initialDelaySeconds: 20
+            periodSeconds: 10
+
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8081
+            initialDelaySeconds: 15
+            periodSeconds: 5
